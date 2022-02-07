@@ -1,5 +1,6 @@
 from flask import render_template,redirect,url_for
 from . import main
+from flask_login import login_required
 # Views
 @main.route('/')
 def index():
@@ -12,8 +13,6 @@ def index():
     return render_template('index.html',message = message)
 
 
-# @main.route('/')
-# def index():
-   
-#     return "Flask"
-
+@main.route('/login',methods=['GET','POST'])
+def login():
+    return()
