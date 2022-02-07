@@ -3,7 +3,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    pass
+    SECRET_KEY='secret_key'
 
 
 
@@ -14,7 +14,7 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    pass
+
 
 
 class DevConfig(Config):
@@ -24,5 +24,12 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://dominic:12345@localhost/my_pitches'
     DEBUG = True
+
+config_options = {
+
+    'development': DevConfig,
+    'production': ProdConfig,
+
+}
