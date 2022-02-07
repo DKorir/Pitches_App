@@ -4,6 +4,7 @@ class Config:
     General configuration parent class
     '''
     SECRET_KEY='secret_key'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
 
 
