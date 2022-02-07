@@ -1,10 +1,10 @@
-from flask import render_template
-from app import app
-from .models import comment
+from flask import render_template,redirect,url_for
+from . import main
 from .forms import CommentForm
+from ..models import Comment
 Comment= comment.Comment
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -14,15 +14,15 @@ def index():
     message = 'Hello World'
     return render_template('index.html',message = message)
 
-@app.route('/movie/comment/new/<int:id>', methods = ['GET','POST'])
+@main.route('/pitch/comment/new/<int:id>', methods = ['GET','POST'])
 def new_review(id):
-    form = ReviewForm()
-    movie = get_movie(id)
+    form = CommentForm()
+    movie = get_pitch(id)
 
     if form.validate_on_submit():
         title = form.title.data
         review = form.review.data
-        new_review = Review(movie.id,title,movie.poster,review)
+        new_review = Comment(movie.id,title,movie.poster,review)
         new_review.save_review()
         return redirect(url_for('movie',id = movie.id ))
 
