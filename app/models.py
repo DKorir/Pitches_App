@@ -11,6 +11,7 @@ class User(db.Model):
     email = db.Column(db.String(255),unique = True,index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     pass_secure = db.Column(db.String(255))
+    bio = db.Column(db.String(255))
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
